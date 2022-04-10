@@ -1,0 +1,159 @@
+#----github.com/marramjamal------
+
+
+from tkinter import *
+from time import *
+#this function encrypt and decrypt   
+
+file=[]
+file1=[]
+filek=[]
+name=[]
+def mono():
+    
+# this function is to do the encryption by finding the character then replace it with another character according to key
+ #which is an input from the user this can be done by using list function which gave each letter a number to make to easier to do the encryption
+ #process while the char is exist at the list of char identified the function find it and replacث it with the new char according to the key however it does not
+ #delet the old one it's only pop it which mean that the letter still at the memory so we can get it back when ever we need it at the decryption function
+    def Encrypt():
+        letters="1234567890`-=_+qwertyu!@#$%^&*()iop[]\QWERTY UIOP{}|asdfghjkl;ASDFGHJKL:\"\'zxcvbnm,./ZXCVBNM<>?"
+        #the fuction of get is to Return the text
+        s=e1.get()
+        file1.append(s)
+        filek.append((4))
+        num1=list(s)
+        x=len(num1)
+        num2=[]
+        while(x>0):
+            x=x-1
+            i=num1.pop()
+            if i in letters:
+                num=letters.find(i)
+                num=num+int(4)
+                if num>=len(letters):
+                    num=num-len(letters)
+                num2.append(letters[num])
+        num2.reverse()
+        r=''.join(num2)
+        file.append(r)
+        name.append("Caicer Cipher")
+        e3.insert(0,r)
+#Decryption converts the encrypted data into its original form 
+#and replace it by a another letter depending on 4 and then returns a new character
+#that represents the originally entered text. 
+    def Decrypt():
+        letters="1234567890`-=_+qwertyu!@#$%^&*()iop[]\QWERTY UIOP{}|asdfghjkl;ASDFGHJKL:\"\'zxcvbnm,./ZXCVBNM<>?"
+        s=e3.get()
+        file.append(s)
+        filek.append((4))
+        num1=list(s)
+        x=len(num1)
+        num2=[]
+        while(x>0):
+            x=x-1
+            i=num1.pop()
+            if i in letters:
+                num=letters.find(i)
+                num=num-int((4))
+                if num<0:
+                    num=num+len(letters)
+                num2.append(letters[num])
+        num2.reverse()
+        #this function Add an element to the right side of the list
+        r=''.join(num2)
+        file1.append(r)
+        name.append("CHAYSER Cipher")
+        #this function Insert STRING at INDEX
+        e1.insert(0,r)
+
+   
+    #2NDPAGE gui
+    
+    mon=Tk()
+    mon.geometry("800x550")
+    mon.title("CAESER cipher")
+    mon1=Frame(mon)
+    mon1.pack()
+    #Return information and save it after deleting it 
+    mon2=Frame(mon)
+    mon2.pack(side=TOP)
+    mon3=Frame(mon)
+    mon3.pack(side=TOP)
+    mon4=Frame(mon)
+    mon4.pack(side=TOP)
+    mon5=Frame(mon)
+    #makes frame for the needed thing .
+    mon5.pack(side=TOP)
+
+
+
+    l5=Label(mon1,text='Enter the message to be encrypted',fg="red",font=("times",35,'italic')).pack()
+    e1=Entry(mon1,width=120,font=10,bd=1) 
+    #It clears the entry box with index 0 to END.
+    #END means till the last letter written in that entry box    
+    def Clear():
+        e1.delete(0,END)    
+    b11=Button(mon2,text="Encrypt",fg="black",bd=1,padx=20,pady=15,command=Encrypt).pack(side=LEFT)
+    b12=Button(mon2,text="Clear Text",fg="black",bd=1,padx=20,pady=15,command=Clear).pack(side=LEFT)
+    e1.pack()
+    e3=Entry(mon3,width=120,font=10,bd=1) 
+    def clear():
+        e3.delete(0,END)    
+    e3.pack()
+    l6=Label(mon3,text='Enter the massege to be decrypted',fg="red",font=("times",35,'italic')).pack()     
+    b14=Button(mon4,text="Decrypt",fg="black",bd=1,padx=20,pady=15,command=Decrypt).pack(side=LEFT)
+    b15=Button(mon4,text="Clear text",fg="black",bd=1,padx=20,pady=15,command=clear).pack(side=LEFT)
+    b17=Button(mon5,text="Exit",fg="black",bd=1,padx=10,pady=10,command=mon.destroy).pack(side=LEFT)
+    mon.mainloop()
+    
+
+root=Tk()
+root.geometry("1000x600")
+root.title('Encryption and Decryption')
+root.configure(background='black')
+frame=Canvas(root)
+frame.pack()
+frame1=Canvas(root)
+frame1.pack(side=TOP)
+frame2=Canvas(root)
+frame2.pack(side=TOP)
+frame3=Canvas(root)
+frame3.pack(side=TOP)
+#A list-like sequence optimized for data accesses near its endpoints
+
+
+imagelist=['f1.png','f2.png','f3.png','f4.png','f5.png','f6.png','f7.png','f8.png']
+#["frame_0.gif","frame_1.gif","frame_2.gif","frame_3.gif","frame_4.gif","frame_5.gif","frame_6.gif","frame_7.gif","frame_8.gif","frame_9.gif","frame_10.gif","frame_11.gif","frame_12.gif","frame_13.gif","frame_14.gif","frame_15.gif","frame_16.gif","frame_17.gif","frame_18.gif","frame_19.gif","frame_20.gif","frame_21.gif","frame_22.gif","frame_23.gif","frame_24.gif","frame_25.gif","frame_26.gif","frame_27.gif","frame_28.gif","frame_29.gif","frame_30.gif"]
+giflist=[]
+for image in imagelist:
+    photo=PhotoImage(file=image)
+    giflist.append(photo)
+    
+
+l0=Label(frame,font=("arial",30,"italic"))
+l=Label(frame,text='Welcome',fg="red",font=("arial",70,'italic'),bg='black',)
+l1=Label(frame,text="You can encrypt and decrypt text",fg="red",font=("times",35,'bold'),bg='black',)
+l2=Label(frame,text="By Nada , Mariam ,Maram ,Yomna and Mena",fg="red",font=("times",35,'italic'),bg='black',)
+l3=Label(frame,text="",fg="red",font=("times",35,'italic'),bg='black',)
+l4=Label(frame1,bd=0)
+button1=Button(frame2,text="Caiser Chipper",fg="black",bd=8,padx=38,pady=25,command=mono)
+button5=Button(frame3,text="Exit",fg="black",bd=8,padx=10,pady=10,command=root.destroy)
+
+while True:
+        for gif in giflist:
+            frame.delete(ALL)
+            l0.config(text=asctime())
+            l0.pack()
+            l.pack()
+            l1.pack()
+            l2.pack(side=LEFT)
+            l3.pack(side=RIGHT)
+            l4.config(image=gif)
+            l4.image=gif
+            sleep(0.1)
+            l4.pack()
+            button1.pack(side=LEFT)
+            button5.pack(side=LEFT)
+           
+            frame.update()
+root.mainloop()
